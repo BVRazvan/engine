@@ -287,27 +287,27 @@ extern int wait(int *);
 static int spawn(const char *cmdname, char **argv) {
 	int pid, n, status;
 
-	switch (pid = fork()) {
-	case -1:
-		fprintf(stderr, "%s: no more processes\n", progname);
-		return 100;
-	case 0:
-		// TTimo removing hardcoded paths, searching in $PATH
-		execvp(cmdname, argv);
-		fprintf(stderr, "%s: ", progname);
-		perror(cmdname);
-		fflush(stdout);
-		exit(100);
-	}
-	while ((n = wait(&status)) != pid && n != -1)
-		;
-	if (n == -1)
-		status = -1;
-	if (status&0377) {
-		fprintf(stderr, "%s: fatal error in %s\n", progname, cmdname);
-		status |= 0400;
-	}
-	return (status>>8)&0377;
+	// switch (pid = fork()) {
+	// case -1:
+	// 	fprintf(stderr, "%s: no more processes\n", progname);
+	// 	return 100;
+	// case 0:
+	// 	// TTimo removing hardcoded paths, searching in $PATH
+	// 	execvp(cmdname, argv);
+	// 	fprintf(stderr, "%s: ", progname);
+	// 	perror(cmdname);
+	// 	fflush(stdout);
+	// 	exit(100);
+	// }
+	// while ((n = wait(&status)) != pid && n != -1)
+	// 	;
+	// if (n == -1)
+	// 	status = -1;
+	// if (status&0377) {
+	// 	fprintf(stderr, "%s: fatal error in %s\n", progname, cmdname);
+	// 	status |= 0400;
+	// }
+	// return (status>>8)&0377;
 }
 #endif
 
