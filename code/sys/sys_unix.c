@@ -730,30 +730,30 @@ Sys_Exec
 */
 static int Sys_Exec( void )
 {
-	pid_t pid = fork( );
+	// pid_t pid = fork( );
 
-	if( pid < 0 )
-		return -1;
+	// if( pid < 0 )
+	// 	return -1;
 
-	if( pid )
-	{
-		// Parent
-		int exitCode;
+	// if( pid )
+	// {
+	// 	// Parent
+	// 	int exitCode;
 
-		wait( &exitCode );
+	// 	wait( &exitCode );
 
-		return WEXITSTATUS( exitCode );
-	}
-	else
-	{
-		// Child
-		execvp( execArgv[ 0 ], execArgv );
+	// 	return WEXITSTATUS( exitCode );
+	// }
+	// else
+	// {
+	// 	// Child
+	// 	execvp( execArgv[ 0 ], execArgv );
 
-		// Failed to execute
-		exit( -1 );
+	// 	// Failed to execute
+	// 	exit( -1 );
 
-		return -1;
-	}
+	// 	return -1;
+	// }
 }
 
 /*
